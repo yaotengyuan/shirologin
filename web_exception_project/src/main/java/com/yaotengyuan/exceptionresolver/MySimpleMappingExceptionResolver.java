@@ -1,4 +1,4 @@
-package com.luo.exceptionresolver;
+package com.yaotengyuan.exceptionresolver;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import com.alibaba.druid.support.json.JSONUtils;
-import com.luo.exception.BusinessException;
+import com.yaotengyuan.exception.BusinessException;
+
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 public class MySimpleMappingExceptionResolver implements
@@ -16,35 +17,35 @@ public class MySimpleMappingExceptionResolver implements
 
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object object, Exception exception) {
-		// ÅĞ¶ÏÊÇ·ñajaxÇëÇó
+		// ï¿½Ğ¶ï¿½ï¿½Ç·ï¿½ajaxï¿½ï¿½ï¿½ï¿½
 		if (!(request.getHeader("accept").indexOf("application/json") > -1 || (request
 				.getHeader("X-Requested-With") != null && request.getHeader(
 				"X-Requested-With").indexOf("XMLHttpRequest") > -1))) {
-			// Èç¹û²»ÊÇajax£¬JSP¸ñÊ½·µ»Ø
-			// Îª°²È«Æğ¼û£¬Ö»ÓĞÒµÎñÒì³£ÎÒÃÇ¶ÔÇ°¶Ë¿É¼û£¬·ñÔò·ñÔòÍ³Ò»¹éÎªÏµÍ³Òì³£
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ajaxï¿½ï¿½JSPï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
+			// Îªï¿½ï¿½È«ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Òµï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½Ç¶ï¿½Ç°ï¿½Ë¿É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³Ò»ï¿½ï¿½ÎªÏµÍ³ï¿½ì³£
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("success", false);
 			if (exception instanceof BusinessException) {
 				map.put("errorMsg", exception.getMessage());
 			} else {
-				map.put("errorMsg", "ÏµÍ³Òì³££¡");
+				map.put("errorMsg", "ÏµÍ³ï¿½ì³£ï¿½ï¿½");
 			}
-			//ÕâÀïĞèÒªÊÖ¶¯½«Òì³£´òÓ¡³öÀ´£¬ÓÉÓÚÃ»ÓĞÅäÖÃlog£¬Êµ¼ÊÉú²ú»·¾³Ó¦¸Ã´òÓ¡µ½logÀïÃæ
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½logï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã´ï¿½Ó¡ï¿½ï¿½logï¿½ï¿½ï¿½ï¿½
 			exception.printStackTrace();
-			//¶ÔÓÚ·ÇajaxÇëÇó£¬ÎÒÃÇ¶¼Í³Ò»Ìø×ªµ½error.jspÒ³Ãæ
+			//ï¿½ï¿½ï¿½Ú·ï¿½ajaxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¶ï¿½Í³Ò»ï¿½ï¿½×ªï¿½ï¿½error.jspÒ³ï¿½ï¿½
 			return new ModelAndView("/error", map);
 		} else {
-			// Èç¹ûÊÇajaxÇëÇó£¬JSON¸ñÊ½·µ»Ø
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ajaxï¿½ï¿½ï¿½ï¿½JSONï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½
 			try {
 				response.setContentType("application/json;charset=UTF-8");
 				PrintWriter writer = response.getWriter();
 				Map<String, Object> map = new HashMap<String, Object>();
 				map.put("success", false);
-				// Îª°²È«Æğ¼û£¬Ö»ÓĞÒµÎñÒì³£ÎÒÃÇ¶ÔÇ°¶Ë¿É¼û£¬·ñÔòÍ³Ò»¹éÎªÏµÍ³Òì³£
+				// Îªï¿½ï¿½È«ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Òµï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½Ç¶ï¿½Ç°ï¿½Ë¿É¼ï¿½ï¿½ï¿½ï¿½Í³Ò»ï¿½ï¿½ÎªÏµÍ³ï¿½ì³£
 				if (exception instanceof BusinessException) {
 					map.put("errorMsg", exception.getMessage());
 				} else {
-					map.put("errorMsg", "ÏµÍ³Òì³££¡");
+					map.put("errorMsg", "ÏµÍ³ï¿½ì³£ï¿½ï¿½");
 				}
 				writer.write(JSONUtils.toJSONString(map));
 				writer.flush();

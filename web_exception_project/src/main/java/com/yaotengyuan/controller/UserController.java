@@ -1,4 +1,4 @@
-package com.luo.controller;
+package com.yaotengyuan.controller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.luo.errorcode.LuoErrorCode;
-import com.luo.exception.BusinessException;
-import com.luo.util.DecriptUtil;
+import com.yaotengyuan.errorcode.LuoErrorCode;
+import com.yaotengyuan.exception.BusinessException;
+import com.yaotengyuan.util.DecriptUtil;
 
 @Controller
 public class UserController {
@@ -45,14 +45,14 @@ public class UserController {
 		throw new Exception();
 	}
 	
-	//Ìø×ªµ½µÇÂ¼Ò³Ãæ
+	//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Â¼Ò³ï¿½ï¿½
 	@RequestMapping("/login.jhtml")
 	public ModelAndView login() throws Exception {
 		ModelAndView mav = new ModelAndView("login");
 		return mav;
 	}
 	
-	//Ìø×ªµ½µÇÂ¼³É¹¦Ò³Ãæ
+	//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Â¼ï¿½É¹ï¿½Ò³ï¿½ï¿½
 	@RequestMapping("/loginsuccess.jhtml")
 	public ModelAndView loginsuccess() throws Exception {
 		ModelAndView mav = new ModelAndView("loginsuccess");
@@ -72,7 +72,7 @@ public class UserController {
 	}
 	
 	/** 
-     * ÑéÖ¤ÓÃ»§ÃûºÍÃÜÂë 
+     * ï¿½ï¿½Ö¤ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
      * @param String username,String password
      * @return 
      */  
@@ -84,9 +84,9 @@ public class UserController {
     		UsernamePasswordToken token = new UsernamePasswordToken(username, DecriptUtil.MD5(password));  
             Subject currentUser = SecurityUtils.getSubject();  
             if (!currentUser.isAuthenticated()){
-            	//Ê¹ÓÃshiroÀ´ÑéÖ¤  
+            	//Ê¹ï¿½ï¿½shiroï¿½ï¿½ï¿½ï¿½Ö¤  
                 token.setRememberMe(true);  
-                currentUser.login(token);//ÑéÖ¤½ÇÉ«ºÍÈ¨ÏÞ  
+                currentUser.login(token);//ï¿½ï¿½Ö¤ï¿½ï¿½É«ï¿½ï¿½È¨ï¿½ï¿½  
             } 
     	}catch(Exception ex){
     		throw new BusinessException(LuoErrorCode.LOGIN_VERIFY_FAILURE);
@@ -96,7 +96,7 @@ public class UserController {
     }  
 	
     /** 
-     * ÍË³öµÇÂ¼
+     * ï¿½Ë³ï¿½ï¿½ï¿½Â¼
      */  
     @RequestMapping(value="/logout.json",method=RequestMethod.POST)    
     @ResponseBody    

@@ -1,4 +1,4 @@
-package com.luo.shiro.realm;
+package com.yaotengyuan.shiro.realm;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import com.luo.util.DecriptUtil;
+import com.yaotengyuan.util.DecriptUtil;
 
 public class MyShiroRealm extends AuthorizingRealm {
 

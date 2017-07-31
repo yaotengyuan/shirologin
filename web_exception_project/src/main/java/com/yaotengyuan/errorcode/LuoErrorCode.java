@@ -1,11 +1,11 @@
-package com.luo.errorcode;
+package com.yaotengyuan.errorcode;
 
 public enum LuoErrorCode {
 	
-	NULL_OBJ("LUO001","╤тоСн╙©у"),
-	ERROR_ADD_USER("LUO002","лМ╪ссц╩╖й╖╟э"),
-	LOGIN_VERIFY_FAILURE("LUO003","╣гб╪яИж╓й╖╟эё╛гК╪Л╡Исц╩╖цШцэбКйг╥ЯуЩх╥"),
-	UNKNOWN_ERROR("LUO999","о╣мЁ╥╠ц╕ё╛гКит╨Стыйт....");
+	NULL_OBJ("LUO001","О©╫О©╫О©╫О©╫н╙О©╫О©╫"),
+	ERROR_ADD_USER("LUO002","О©╫О©╫О©╫О©╫ц╩О©╫й╖О©╫О©╫"),
+	LOGIN_VERIFY_FAILURE("LUO003","О©╫О©╫б╪О©╫О©╫ж╓й╖О©╫эёО©╫О©╫О©╫О©╫О©╫О©╫ц╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫г╥О©╫О©╫О©╫х╥"),
+	UNKNOWN_ERROR("LUO999","о╣мЁО©╫О©╫ц╕О©╫О©╫О©╫О©╫О©╫т╨О©╫О©╫О©╫О©╫О©╫....");
 	
 	
     private String value;

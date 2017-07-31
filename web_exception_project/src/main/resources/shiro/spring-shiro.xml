@@ -14,7 +14,7 @@
     </bean>  
   
     <!-- 項目自定义的Realm -->  
-    <bean id="myShiroRealm" class="com.luo.shiro.realm.MyShiroRealm">  
+    <bean id="myShiroRealm" class="com.yaotengyuan.shiro.realm.MyShiroRealm">  
         <property name="cacheManager" ref="cacheManager" />  
     </bean>  
   

@@ -26,14 +26,14 @@
 	</mvc:annotation-driven>
 	
      <!-- 扫描controller（controller层注入） -->
-     <context:component-scan base-package="com.luo.controller"/>  
+     <context:component-scan base-package="com.yaotengyuan.controller"/>  
      
      <!-- 对模型视图添加前后缀 -->
      <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"
       p:prefix="/WEB-INF/view/" p:suffix=".jsp"/>
      
 	 <!-- 框架异常处理Handler -->
-	 <bean id="exceptionResolver" class="com.luo.exceptionresolver.MySimpleMappingExceptionResolver">
+	 <bean id="exceptionResolver" class="com.yaotengyuan.exceptionresolver.MySimpleMappingExceptionResolver">
 	 </bean>
 	 
 </beans>

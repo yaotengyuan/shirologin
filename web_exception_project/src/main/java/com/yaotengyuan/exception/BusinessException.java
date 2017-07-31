@@ -1,4 +1,4 @@
-package com.luo.exception;
+package com.yaotengyuan.exception;
 
 public class BusinessException extends RuntimeException {
 	

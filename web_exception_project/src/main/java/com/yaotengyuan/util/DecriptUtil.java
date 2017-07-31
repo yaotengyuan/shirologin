@@ -1,4 +1,4 @@
-package com.luo.util;
+package com.yaotengyuan.util;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.MessageDigest;
@@ -15,11 +15,11 @@ import javax.crypto.spec.SecretKeySpec;
 public class DecriptUtil {
 
     /** 
-     * @author£ºÂÞ¹ú»Ô 
-     * @date£º 2015Äê12ÔÂ17ÈÕ ÉÏÎç9:16:22 
-     * @description£º AES¼ÓÃÜ
-     * @parameter£º str£º´ý¼ÓÃÜ×Ö·û´®£¬secretKeyBase£ºÓÃÓÚÉú³ÉÃÜÔ¿µÄ»ù´¡×Ö·û´®
-     * @return£º  ¼ÓÃÜ×Ö½ÚÊý×é
+     * @authorï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ 
+     * @dateï¿½ï¿½ 2015ï¿½ï¿½12ï¿½ï¿½17ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:16:22 
+     * @descriptionï¿½ï¿½ AESï¿½ï¿½ï¿½ï¿½
+     * @parameterï¿½ï¿½ strï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½secretKeyBaseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½Ä»ï¿½ï¿½Ö·ï¿½
+     * @returnï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½
     **/
     public static byte[] encryptAES(String str, String secretKeyBase) {
         try {
@@ -28,11 +28,11 @@ public class DecriptUtil {
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
             SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
-            Cipher cipher = Cipher.getInstance("AES");// ´´½¨ÃÜÂëÆ÷
+            Cipher cipher = Cipher.getInstance("AES");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             byte[] byteContent = str.getBytes("UTF-8");
-            cipher.init(Cipher.ENCRYPT_MODE, key);// ³õÊ¼»¯
+            cipher.init(Cipher.ENCRYPT_MODE, key);// ï¿½ï¿½Ê¼ï¿½ï¿½
             byte[] result = cipher.doFinal(byteContent);
-            return result; // ¼ÓÃÜ
+            return result; // ï¿½ï¿½ï¿½ï¿½
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -50,12 +50,12 @@ public class DecriptUtil {
     }
 
     /** 
-     * @author£ºÂÞ¹ú»Ô 
-     * @date£º 2015Äê12ÔÂ17ÈÕ ÉÏÎç9:16:22 
-     * @description£º AES½âÃÜ
-     * @parameter£º strByteArray£º´ý½âÃÜ×Ö½ÚÊý×é£¬
-     * @parameter£º secretKeyBase£ºÓÃÓÚÉú³ÉÃÜÔ¿µÄ»ù´¡×Ö·û´®£¬ ÐèÒª×¢ÒâµÄÊÇEASÊÇ¶Ô³Æ¼ÓÃÜ£¬ËùÒÔsecretKeyBaseÔÚ¼ÓÃÜ½âÃÜÊ±ÒªÒ»ÑùµÄ
-     * @return£º  ½âÃÜºó×Ö·û´®
+     * @authorï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ 
+     * @dateï¿½ï¿½ 2015ï¿½ï¿½12ï¿½ï¿½17ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:16:22 
+     * @descriptionï¿½ï¿½ AESï¿½ï¿½ï¿½ï¿½
+     * @parameterï¿½ï¿½ strByteArrayï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½é£¬
+     * @parameterï¿½ï¿½ secretKeyBaseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½Ä»ï¿½ï¿½Ö·ï¿½ ï¿½ï¿½Òª×¢ï¿½ï¿½ï¿½ï¿½ï¿½EASï¿½Ç¶Ô³Æ¼ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½secretKeyBaseï¿½Ú¼ï¿½ï¿½Ü½ï¿½ï¿½ï¿½Ê±ÒªÒ»ï¿½ï¿½ï¿½
+     * @returnï¿½ï¿½  ï¿½ï¿½ï¿½Üºï¿½ï¿½Ö·ï¿½
     **/
     public static String decryptAES(byte[] strByteArray, String secretKeyBase) {
         try {
@@ -64,10 +64,10 @@ public class DecriptUtil {
             SecretKey secretKey = kgen.generateKey();
             byte[] enCodeFormat = secretKey.getEncoded();
             SecretKeySpec key = new SecretKeySpec(enCodeFormat, "AES");
-            Cipher cipher = Cipher.getInstance("AES");// ´´½¨ÃÜÂëÆ÷
-            cipher.init(Cipher.DECRYPT_MODE, key);// ³õÊ¼»¯
+            Cipher cipher = Cipher.getInstance("AES");// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            cipher.init(Cipher.DECRYPT_MODE, key);// ï¿½ï¿½Ê¼ï¿½ï¿½
             String result = new String(cipher.doFinal(strByteArray),"UTF-8");
-            return result; // ¼ÓÃÜ
+            return result; // ï¿½ï¿½ï¿½ï¿½
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -85,21 +85,21 @@ public class DecriptUtil {
     }
 
     /** 
-     * @author£ºÂÞ¹ú»Ô 
-     * @date£º 2015Äê12ÔÂ17ÈÕ ÉÏÎç9:24:43 
-     * @description£º SHA¡¢SHA1¼ÓÃÜ
-     * @parameter£º   str£º´ý¼ÓÃÜ×Ö·û´®
-     * @return£º  ¼ÓÃÜ´®
+     * @authorï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ 
+     * @dateï¿½ï¿½ 2015ï¿½ï¿½12ï¿½ï¿½17ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:24:43 
+     * @descriptionï¿½ï¿½ SHAï¿½ï¿½SHA1ï¿½ï¿½ï¿½ï¿½
+     * @parameterï¿½ï¿½   strï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+     * @returnï¿½ï¿½  ï¿½ï¿½ï¿½Ü´ï¿½
     **/
     public static String SHA1(String str) {
         try {
             MessageDigest digest = java.security.MessageDigest
-                    .getInstance("SHA-1"); //Èç¹ûÊÇSHA¼ÓÃÜÖ»ÐèÒª½«"SHA-1"¸Ä³É"SHA"¼´¿É
+                    .getInstance("SHA-1"); //ï¿½ï¿½ï¿½ï¿½ï¿½SHAï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Òªï¿½ï¿½"SHA-1"ï¿½Ä³ï¿½"SHA"ï¿½ï¿½ï¿½ï¿½
             digest.update(str.getBytes());
             byte messageDigest[] = digest.digest();
             // Create Hex String
             StringBuffer hexStr = new StringBuffer();
-            // ×Ö½ÚÊý×é×ª»»Îª Ê®Áù½øÖÆ Êý
+            // ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îª Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             for (int i = 0; i < messageDigest.length; i++) {
                 String shaHex = Integer.toHexString(messageDigest[i] & 0xFF);
                 if (shaHex.length() < 2) {
@@ -116,23 +116,23 @@ public class DecriptUtil {
     }
 
     /** 
-     * @author£ºÂÞ¹ú»Ô 
-     * @date£º 2015Äê12ÔÂ17ÈÕ ÉÏÎç9:24:43 
-     * @description£º MD5¼ÓÃÜ
-     * @parameter£º   str£º´ý¼ÓÃÜ×Ö·û´®
-     * @return£º  ¼ÓÃÜ´®
+     * @authorï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ 
+     * @dateï¿½ï¿½ 2015ï¿½ï¿½12ï¿½ï¿½17ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:24:43 
+     * @descriptionï¿½ï¿½ MD5ï¿½ï¿½ï¿½ï¿½
+     * @parameterï¿½ï¿½   strï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+     * @returnï¿½ï¿½  ï¿½ï¿½ï¿½Ü´ï¿½
     **/
     public static String MD5(String str) {
         try {
-            // »ñµÃMD5ÕªÒªËã·¨µÄ MessageDigest ¶ÔÏó
+            // ï¿½ï¿½ï¿½MD5ÕªÒªï¿½ã·¨ï¿½ï¿½ MessageDigest ï¿½ï¿½ï¿½ï¿½
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            // Ê¹ÓÃÖ¸¶¨µÄ×Ö½Ú¸üÐÂÕªÒª
+            // Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú¸ï¿½ï¿½ï¿½ÕªÒª
             mdInst.update(str.getBytes());
-            // »ñµÃÃÜÎÄ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             byte[] md = mdInst.digest();
-            // °ÑÃÜÎÄ×ª»»³ÉÊ®Áù½øÖÆµÄ×Ö·û´®ÐÎÊ½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ê®ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ê½
             StringBuffer hexString = new StringBuffer();
-            // ×Ö½ÚÊý×é×ª»»Îª Ê®Áù½øÖÆ Êý
+            // ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Îª Ê®ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             for (int i = 0; i < md.length; i++) {
                 String shaHex = Integer.toHexString(md[i] & 0xFF);
                 if (shaHex.length() < 2) {
@@ -148,19 +148,19 @@ public class DecriptUtil {
     }
     
     /** 
-     * @author£ºÂÞ¹ú»Ô 
-     * @date£º 2015Äê12ÔÂ17ÈÕ ÉÏÎç9:24:43 
-     * @description£º MD5¼ÓÃÜ ·µ»Ø¶þ½øÖÆ
-     * @parameter£º   str£º´ý¼ÓÃÜ×Ö·û´®
-     * @return£º  ¼ÓÃÜ¶þ½øÖÆ
+     * @authorï¿½ï¿½ï¿½Þ¹ï¿½ï¿½ 
+     * @dateï¿½ï¿½ 2015ï¿½ï¿½12ï¿½ï¿½17ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:24:43 
+     * @descriptionï¿½ï¿½ MD5ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½
+     * @parameterï¿½ï¿½   strï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
+     * @returnï¿½ï¿½  ï¿½ï¿½ï¿½Ü¶ï¿½ï¿½ï¿½ï¿½ï¿½
     **/
     public static byte[] MD5ToByteArray(String str) {
         try {
-            // »ñµÃMD5ÕªÒªËã·¨µÄ MessageDigest ¶ÔÏó
+            // ï¿½ï¿½ï¿½MD5ÕªÒªï¿½ã·¨ï¿½ï¿½ MessageDigest ï¿½ï¿½ï¿½ï¿½
             MessageDigest mdInst = MessageDigest.getInstance("MD5");
-            // Ê¹ÓÃÖ¸¶¨µÄ×Ö½Ú¸üÐÂÕªÒª
+            // Ê¹ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö½Ú¸ï¿½ï¿½ï¿½ÕªÒª
             mdInst.update(str.getBytes());
-            // »ñµÃÃÜÎÄ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             byte[] md = mdInst.digest();
             return md;
         } catch (NoSuchAlgorithmException e) {

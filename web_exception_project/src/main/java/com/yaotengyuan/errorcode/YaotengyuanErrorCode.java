@@ -1,17 +1,17 @@
 package com.yaotengyuan.errorcode;
 
-public enum LuoErrorCode {
+public enum YaotengyuanErrorCode {
 	
-	NULL_OBJ("LUO001","����Ϊ��"),
-	ERROR_ADD_USER("LUO002","����û�ʧ��"),
-	LOGIN_VERIFY_FAILURE("LUO003","��¼��֤ʧ�ܣ������û��������Ƿ���ȷ"),
-	UNKNOWN_ERROR("LUO999","ϵͳ��æ�����Ժ�����....");
+	NULL_OBJ("LUO001","空对象"),
+	ERROR_ADD_USER("LUO002","添加用户错误"),
+	LOGIN_VERIFY_FAILURE("LUO003","登陆认证失败"),
+	UNKNOWN_ERROR("LUO999","未知错误....");
 	
 	
     private String value;
     private String desc;
 
-    private LuoErrorCode(String value, String desc) {
+    private YaotengyuanErrorCode(String value, String desc) {
         this.setValue(value);
         this.setDesc(desc);
     }

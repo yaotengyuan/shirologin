@@ -16,38 +16,40 @@ import org.apache.shiro.subject.PrincipalCollection;
 import com.luo.util.DecriptUtil;
 
 public class MyShiroRealm extends AuthorizingRealm {
-	
-	//ÕâÀïÒòÎªÃ»ÓÐµ÷ÓÃºóÌ¨£¬Ö±½ÓÄ¬ÈÏÖ»ÓÐÒ»¸öÓÃ»§("luoguohui"£¬"123456")
-	private static final String USER_NAME = "luoguohui";  
-	private static final String PASSWORD = "123456";  
-	
-	/* 
-	 * ÊÚÈ¨
-	 */
-	@Override
-	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) { 
-        Set<String> roleNames = new HashSet<String>();  
-        Set<String> permissions = new HashSet<String>();  
-        roleNames.add("administrator");//Ìí¼Ó½ÇÉ«
-        permissions.add("newPage.jhtml");  //Ìí¼ÓÈ¨ÏÞ
-        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);  
-        info.setStringPermissions(permissions);  
-        return info;  
-	}
-	
-	
-	/* 
-	 * µÇÂ¼ÑéÖ¤
-	 */
-	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(
-			AuthenticationToken authcToken) throws AuthenticationException {
-		UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-		if(token.getUsername().equals(USER_NAME)){
-			return new SimpleAuthenticationInfo(USER_NAME, DecriptUtil.MD5(PASSWORD), getName());  
-		}else{
-			throw new AuthenticationException();  
-		}
-	}
+
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÃ»ï¿½Ðµï¿½ï¿½Ãºï¿½Ì¨ï¿½ï¿½Ö±ï¿½ï¿½Ä¬ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½("luoguohui"ï¿½ï¿½"123456")
+    private static final String USER_NAME = "yaotengyuan";
+
+    private static final String PASSWORD = "123456";
+
+    /*
+     * ï¿½ï¿½È¨
+     */
+    @Override
+    protected AuthorizationInfo doGetAuthorizationInfo(
+            PrincipalCollection principals) {
+        Set<String> roleNames = new HashSet<String>();
+        Set<String> permissions = new HashSet<String>();
+        roleNames.add("administrator");//ï¿½ï¿½Ó½ï¿½É«
+        permissions.add("newPage.jhtml"); //ï¿½ï¿½ï¿½È¨ï¿½ï¿½
+        SimpleAuthorizationInfo info = new SimpleAuthorizationInfo(roleNames);
+        info.setStringPermissions(permissions);
+        return info;
+    }
+
+    /*
+     * ï¿½ï¿½Â¼ï¿½ï¿½Ö¤
+     */
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(
+            AuthenticationToken authcToken) throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
+        if (token.getUsername().equals(USER_NAME)) {
+            return new SimpleAuthenticationInfo(USER_NAME,
+                    DecriptUtil.MD5(PASSWORD), getName());
+        } else {
+            throw new AuthenticationException();
+        }
+    }
 
 }

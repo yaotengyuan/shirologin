@@ -7,5 +7,7 @@ public class BusinessException extends RuntimeException {
 	public BusinessException(Object Obj) {
 		super(Obj.toString());
 	}
-	
+	public Business() {
+	   System.out.println("111111");
+	}
 }

@@ -10,4 +10,10 @@ public class BusinessException extends RuntimeException {
 	public void Business() {
 	   System.out.println("111111");
 	}
+public void Business1() {
+	   System.out.println("111222222111");
+	}
+	public void Business2() {
+	   System.out.println("33333333");
+	}
 }
